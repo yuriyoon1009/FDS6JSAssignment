@@ -28,3 +28,4 @@ function funcArgu(){
 
 ```
 2. 함수표현식 (Function expression)
+- anonymous function
