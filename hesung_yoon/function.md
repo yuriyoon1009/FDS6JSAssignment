@@ -1,5 +1,7 @@
-javascript function : http://poiemaweb.com/js-function
-
+Reference
+- javascript function
+   - http://poiemaweb.com/js-function
+   - http://yookeun.github.io/javascript/2015/03/08/javascript-construct/
 # 함수 (Function)
   ### 함수란 어떤 특정 작업을 수행하기 위해 필요한 일련의 구문들을 그룹화하기 위한 개념이다.
   ### A function is a block of code designed to perform a particular task.
@@ -14,7 +16,7 @@ function jsFunc(){
    return name + funcReturn 
 }
 
-// 매개변수 (function parameters)
+// 매개변수, 인자 (function parameters)
 function func(para){
   return 'parameters are the names listed in the function definition.'
 }
@@ -82,7 +84,25 @@ var add = function add(x,y){
 }
 ```
 5.일급객체 (First-class object)
+객체(object)를 1급 시민으로써 취급한다. 아래 조건을 모두 충촉한다.
+ - 무명의 리터럴로 표현이 가능하다.
+ - 변수(variable)에 담을 수 있다.
+ - 인자(parameter)로 전달할 수 있다.
+ - 반환값(return value)로 전달할 수 있다.
+ - 자료 구조(객체, 배열..)에 저장할 수 있다.
 
+6.값에 의한 호출(call-by-value)
+인수(arguments)를 함수에 인자(parameter)로 전달할 때 매개변수에 값을 복사하여
+함수로 전달하는 방식이다.
+```
+function foo(primitive){
+ primitive += 1;
+ return primitive;
+}
 
+var x = 0;
+foo(x) // 1
+```
+7.참조에 의한 호출 (call-by-reference)
 
 
