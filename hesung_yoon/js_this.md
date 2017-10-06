@@ -1,7 +1,6 @@
 Reference
 - javascript function
    - http://poiemaweb.com/js-this
-   - http://poiemaweb.com/js-this
 
 # 함수 호출 패턴에 따라 결정되는 this 
   
