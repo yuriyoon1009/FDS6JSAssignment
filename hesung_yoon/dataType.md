@@ -1,4 +1,4 @@
-//data-type and variable : http://poiemaweb.com/js-data-type-variable
+data-type and variable : http://poiemaweb.com/js-data-type-variable
 
 ### variable
   #### 위치(address)를 기억하는 저장소이다. 즉, 변수는 memory address에 접근하기 위한 식별자(identifier)이다.
