@@ -70,13 +70,71 @@ console.log(x); // 10
 ```
 
 3. 암묵적 전역(implied globals)
+-  변수를 찾고 존재하지 않으면 변수를 암묵적으로 전역변수로 선언한다.
 
+```
 function foo(){
-  var local = 'local';
-  console.log(global);
-  
+  x = 1;
+  var y = 2;
 }
 
+foo();
+
+console.log(x) //전역변수 var x = 1;
+console.log(y) //cannot find
+```
+
+4. Lexical scoping(static scoping)
+- 함수가 선언된 시점에서의 유효범위를 갖는다. 
+```
+
+
+var i = 5;
+
+function foo() {
+  var i = 10;
+  bar();
+}
+
+function bar() { // 선언된 시점에서의 scope를 갖는다!
+  console.log(i);
+}
+
+foo(); //5
+```
+
+5. 전역변수 사용 줄이기
+  - 전역변수 객체 하나를 만들어 사용하기 (var object = {}) 
+```
+var MYAPP = {};
+
+MYAPP.student = {
+  name: 'Lee',
+  gender: 'male'
+};
+
+console.log(MYAPP) 
+/*
+MYAPP = {student : {name: 'Lee', gender: 'male'} }
+*/
+console.log(MYAPP.student.name); // Lee
+```
+  - 즉시 실행 함수(IIFE, Immediately-Invoked Function Expression)는 즉시 실행되고 그 후 전역에서 바로 사라진다.
+```
+(function () {
+  var MYAPP = {};
+
+  MYAPP.student = {
+    name: 'Lee',
+    gender: 'male'
+  };
+
+  console.log(MYAPP.student.name);
+}());
+
+console.log(MYAPP.student.name);
+
+```
 
 
 
