@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+
+(function() {
+
+    let todos = [
+      { id: 3, content: 'HTML', completed: false },
+      { id: 2, content: 'CSS', completed: true },
+      { id: 1, content: 'Javascript', completed: false }
+    ];
+   
+// 1. todos의 각 요소 중, id 프로퍼티의 값만을 추출한 배열을 생성하는 함수를 작성하라.
+// => [3, 2, 1]
+console.log(todos.map(function(todo){return todo.id;}) );
+
+//array.sort(function(a,b){return a - b});
+//console.log(array);
+//[1,2,3]
+
+// 2. todos 배열의 최대값을 구하는 함수를 작성하라.
+// => 3
+
+console.log( Math.max.apply(null, todos.map(function(todo){return todo.id})) )  // Math.max.apply(null, [3,2,1]);
+
+/*var maxArr = todos.map(function(todo){
+  return todo.id;
+})
+
+console.log(Math.max.apply(null, maxArr));*/
+
+
+// 3. todos에 선두에 새로운 요소로서 객체 { id: 4, content: 'Test', completed: false }를 추가하는 함수를 작성하라
+// todos = [
+//   { id: 4, content: 'Test', completed: false },
+//   { id: 3, content: 'HTML', completed: false },
+//   { id: 2, content: 'CSS', completed: true },
+//   { id: 1, content: 'Javascript', completed: false }
+// ];
+
+//push, unshift 보다 concat ! 
+var max = Math.max.apply(null, todos.map(function(todo){return todo.id}) );
+todos = [{id:max+1, content:'Test', completed:false}].concat(todos);
+console.log(todos);
+// 4. todos에서 id가 4인 요소를 삭제하는 함수를 작성하라
+// todos = [
+//   { id: 3, content: 'HTML', completed: false },
+//   { id: 2, content: 'CSS', completed: true },
+//   { id: 1, content: 'Javascript', completed: false }
+// ];
+
+var deleteList = function(id){
+  todos = todos.filter(function(todo){
+    return todo.id !== parseInt(id); 
+  });
+}
+
+deleteList(4);
+console.log(todos);
+
+// 5. todos에서 id가 3인 요소의 completed 프로퍼티 값을 반전하는 함수를 작성하라
+// todos = [
+//   { id: 3, content: 'HTML', completed: ture },
+//   { id: 2, content: 'CSS', completed: true },
+//   { id: 1, content: 'Javascript', completed: false }
+// ];
+
+console.log('before trigger conver function', todos);
+var convert = function(id){
+  todos = todos.map(function(todo){
+    return todo.id == id ? Object.assign({}, todo, {completed:!todo.completed}) : todo;
+  });
+}
+convert(3);
+console.log('after trigger conver function', todos);
+
+// 6. todos에서 모든 요소의 completed 프로퍼티 값을 true로 설정하는 함수를 작성하라
+// todos = [
+//   { id: 3, content: 'HTML', completed: ture },
+//   { id: 2, content: 'CSS', completed: true },
+//   { id: 1, content: 'Javascript', completed: ture }
+// ];
+
+console.log('6번',todos.map(function(todo){ return Object.assign({}, todo, {completed:true})}) )
+
+
+// 7. todos에서 완료(completed: true)한 할일의 갯수를 구하는 함수를 작성하라
+console.log(todos.filter(function(todo){return todo.completed !== false;}).length)
+
+}())
+
+</script>
+</html>
